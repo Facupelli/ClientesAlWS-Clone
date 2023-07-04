@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import ProductVariants from "./ProductVariants.vue";
+import Modal from "./Modal.vue";
 import { Product } from "types";
 
 const { fetchProducts } = useUtils();
 const { cart, addToCart } = useCart();
 const productList = await fetchProducts();
 
-const child = ref(null);
+const child = ref<InstanceType<typeof Modal> | null>(null);
 const selectedProduct = ref<Product | null>(null);
 const selectedVariant = ref<string | null>(null);
 const selectedVariant2 = ref<string | null>(null);

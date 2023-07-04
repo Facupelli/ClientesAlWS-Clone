@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { onClickOutside } from "@vueuse/core";
 
-// const props = defineProps<{
-//   show: boolean;
-// }>();
-
 const modalRef = ref(null);
 const showModal = ref(false);
 
@@ -17,13 +13,6 @@ const openModal = () => {
 };
 
 onClickOutside(modalRef, closeModal);
-
-// watch(
-//   () => props.show,
-//   (show: boolean) => {
-//     showModal.value = show;
-//   }
-// );
 
 defineExpose({
   closeModal,
@@ -47,11 +36,11 @@ defineExpose({
       >
         <transition
           enter-active-class="transition ease-out duration-300 transform "
-          enter-from-class="opacity-0 translate-y-10 scale-95"
+          enter-from-class="opacity-0 translate-y-[-100px] scale-95"
           enter-to-class="opacity-100 translate-y-0 scale-100"
           leave-active-class="ease-in duration-200"
           leave-from-class="opacity-100 translate-y-0 scale-100"
-          leave-to-class="opacity-0 translate-y-10 translate-y-0 scale-95"
+          leave-to-class="opacity-0 translate-y-[-100px] translate-y-0 scale-95"
         >
           <dialog
             class="absolute w-[90%] shadow-md rounded-md z-10 p-0 top-5"

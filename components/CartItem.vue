@@ -20,7 +20,7 @@ defineProps<{
       />
     </div>
     <div>
-      <p>{{ item.nombre }}</p>
+      <p class="font-semibold">{{ item.nombre }}</p>
       <div class="flex gap-4">
         <p>{{ item.variedades[0] }}</p>
         <p>{{ item.variedades2[0] }}</p>
