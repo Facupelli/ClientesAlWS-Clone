@@ -1,71 +1,72 @@
-<script setup>
-import { onClickOutside } from "@vueuse/core";
+<script setup lang="ts">
+import ProductVariants from "./ProductVariants.vue";
+import { Product } from "types";
 
 const { fetchProducts } = useUtils();
 const { cart, addToCart } = useCart();
 const productList = await fetchProducts();
 
-const modalRef = ref();
-const showModal = ref(false);
-const productSelected = useState("cart", () => null);
+const child = ref(null);
+const productSelected = ref<Product | null>(null);
 
-const setSelectedProduct = (product) => {
-  productSelected.value = product;
-};
-
-const close = () => {
-  showModal.value = false;
-};
-
-onClickOutside(modalRef, close);
-
-const handleAddToCart = (product) => {
-  if (product.variedades?.length > 0) {
-    setSelectedProduct(product);
-    return (showModal.value = true);
+const setSelectedProduct = (product: Product) => {
+  if (productSelected.value) {
+    productSelected.value = product;
   }
-  addToCart(product);
+};
+
+const handleAddToCart = (product: Product) => {
+  // if (product.variedades && product.variedades?.length > 0) {
+  //   setSelectedProduct(product);
+  //   return (showModal.value = true);
+  // }
+  // addToCart(product);
+  console.log("si");
+  if (child.value) {
+    child.value.openModal();
+  }
 };
 </script>
 
 <template>
-  <Modal :is-open="showModal" ref="modalRef">
+  <Modal ref="child">
     <template #header>
-      <h1>Elige una opción</h1>
+      <h1>Elige una opción de cada variedad</h1>
     </template>
 
     <template #body>
-      <div v-if="productSelected" class="grid gap-4">
-        <ul class="flex flex-wrap gap-2">
-          <li
-            v-for="variant in productSelected.variedades"
-            class="font-semibold flex justify-center items-center border-b-2 px-3 py-1 border-gray-200"
-          >
-            {{ variant }}
-          </li>
-        </ul>
-        <ul
-          v-if="productSelected.variedades2.length > 0"
-          class="flex flex-wrap gap-2"
+      <div v-if="productSelected" class="grid gap-6">
+        <div
+          v-if="
+            productSelected.variedades && productSelected.variedades?.length > 0
+          "
+          class="grid gap-4"
         >
-          <li
-            v-for="variant in productSelected.variedades2"
-            class="font-semibold flex justify-center items-center border-b-2 px-3 py-1 border-gray-200"
-          >
-            {{ variant }}
-          </li>
-        </ul>
+          <ProductVariants :variants="productSelected.variedades" />
+        </div>
+        <div
+          v-if="
+            productSelected.variedades2 &&
+            productSelected.variedades2?.length > 0
+          "
+          class="grid gap-4"
+        >
+          <ProductVariants :variants="productSelected.variedades2" />
+        </div>
       </div>
     </template>
 
-    <!-- <template #footer>
-      <h1>FOOTER</h1>
-    </template> -->
+    <template #footer>
+      <!-- <div class="flex justify-end">
+        <button class="py-1 px-4 rounded-md bg-green-200">aceptar</button>
+      </div> -->
+    </template>
   </Modal>
 
   <section class="grid grid-cols-2 gap-1">
     <ProductCard
       v-for="product in productList"
+      :key="product.id"
       :product="product"
       :handle-add-to-cart="() => handleAddToCart(product)"
     />

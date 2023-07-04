@@ -1,6 +1,6 @@
 import Papa from "papaparse";
 
-import { Product } from "types";
+import { ExcelProduct } from "types";
 
 export const useUtils = () => {
   const fetchProducts = async () => {
@@ -13,8 +13,8 @@ export const useUtils = () => {
     );
     const data = (await toRaw(res.value)) as string;
 
-    const parsed = await new Promise<Product[]>((resolve, reject) => {
-      Papa.parse<Product>(data, {
+    const parsed = await new Promise<ExcelProduct[]>((resolve, reject) => {
+      Papa.parse<ExcelProduct>(data, {
         header: true,
         complete: (result) => resolve(result.data),
         error: reject,
