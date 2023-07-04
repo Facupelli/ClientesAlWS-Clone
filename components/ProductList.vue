@@ -38,7 +38,7 @@ const handleAddToCart = () => {
     return;
   }
 
-  if (selectedProduct.value) {
+  if (selectedProduct.value && child.value) {
     const product = {
       ...selectedProduct.value,
       variedades: [selectedVariant.value],
@@ -46,6 +46,7 @@ const handleAddToCart = () => {
     };
 
     addToCart(product);
+    return child.value.closeModal();
   }
 };
 </script>

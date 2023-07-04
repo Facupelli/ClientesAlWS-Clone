@@ -4,7 +4,8 @@ const { cart } = useCart();
 
 <template>
   <div>
-    <h1>CART PAGE</h1>
-    <div v-for="item in cart">{{ item.nombre }}</div>
+    <section class="px-4 grid gap-8">
+      <CartItem v-for="item in cart" :item="item" />
+    </section>
   </div>
 </template>
