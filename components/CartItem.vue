@@ -22,8 +22,8 @@ defineProps<{
     <div>
       <p class="font-semibold">{{ item.nombre }}</p>
       <div class="flex gap-4">
-        <p>{{ item.variedades[0] }}</p>
-        <p>{{ item.variedades2[0] }}</p>
+        <p class="text-black/60">{{ item.variedades[0] }}</p>
+        <p class="text-black/60">{{ item.variedades2[0] }}</p>
       </div>
     </div>
     <p class="font-bold ml-auto">{{ formatPrice(item.precio) }}</p>

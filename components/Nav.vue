@@ -17,8 +17,10 @@ onClickOutside(el, close);
 </script>
 
 <template>
-  <nav class="flex py-4 px-6 relative">
-    <h1>Clientes al WS</h1>
+  <nav class="flex py-4 px-6 relative bg-green-400">
+    <NuxtLink to="/">
+      <h1>Clientes al WS</h1>
+    </NuxtLink>
     <label for="nav-toggle" class="ml-auto">+++</label>
     <input v-model="nav" id="nav-toggle" type="checkbox" class="peer hidden" />
     <div
