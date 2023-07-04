@@ -5,7 +5,6 @@ const { formatPrice } = useUtils();
 
 defineProps<{
   product: Product;
-  handleAddToCart: (product: Product) => void;
 }>();
 </script>
 
@@ -26,7 +25,7 @@ defineProps<{
       </p>
       <p class="font-bold">{{ formatPrice(product.precio) }}</p>
       <button
-        @click="handleAddToCart(product)"
+        @click="$emit('addClick', product)"
         class="p-1 bg-green-300 rounded-md"
       >
         agregar

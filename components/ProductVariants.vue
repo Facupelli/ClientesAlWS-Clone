@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { Product } from "types";
+import { emit } from "process";
 
 defineProps<{
   variants: string[];
 }>();
+
+const variantSelected = ref<string | null>(null);
 </script>
 
 <template>
@@ -11,12 +13,19 @@ defineProps<{
     <li
       v-for="variant in variants"
       class="font-semibold flex justify-center items-center border-b-2 px-3 py-1 border-gray-200"
+      :class="{ 'border-green-400': variantSelected === variant }"
     >
-      <!-- <input type="radio" :id="variant" />
+      <input
+        v-model="variantSelected"
+        type="radio"
+        :id="variant"
+        :value="variant"
+        class="hidden"
+        @click="$emit('selectVariant', variant)"
+      />
       <label :for="variant">
         {{ variant }}
-      </label> -->
-      {{ variant }}
+      </label>
     </li>
   </ul>
 </template>

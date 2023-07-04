@@ -7,13 +7,23 @@ const { cart, addToCart } = useCart();
 const productList = await fetchProducts();
 
 const child = ref(null);
-const productSelected = ref<Product | null>(null);
+const selectedProduct = ref<Product | null>(null);
+const selectedVariant = ref<string | null>(null);
+const selectedVariant2 = ref<string | null>(null);
 
 const setSelectedProduct = (product: Product) => {
-  productSelected.value = product;
+  selectedProduct.value = product;
 };
 
-const handleAddToCart = (product: Product) => {
+const setSelectedVariant = (variant: string) => {
+  selectedVariant.value = variant;
+};
+
+const setSelectedVariant2 = (variant: string) => {
+  selectedVariant2.value = variant;
+};
+
+const handleAddClick = (product: Product) => {
   if (product.variedades && product.variedades?.length > 0) {
     if (child.value) {
       setSelectedProduct(product);
@@ -21,6 +31,22 @@ const handleAddToCart = (product: Product) => {
     }
   }
   addToCart(product);
+};
+
+const handleAddToCart = () => {
+  if (!selectedVariant.value || !selectedVariant2.value) {
+    return;
+  }
+
+  if (selectedProduct.value) {
+    const product = {
+      ...selectedProduct.value,
+      variedades: [selectedVariant.value],
+      variedades2: [selectedVariant2.value],
+    };
+
+    addToCart(product);
+  }
 };
 </script>
 
@@ -31,31 +57,42 @@ const handleAddToCart = (product: Product) => {
     </template>
 
     <template #body>
-      <div v-if="productSelected" class="grid gap-6">
+      <div v-if="selectedProduct" class="grid gap-6">
         <div
           v-if="
-            productSelected.variedades && productSelected.variedades?.length > 0
+            selectedProduct.variedades && selectedProduct.variedades?.length > 0
           "
           class="grid gap-4"
         >
-          <ProductVariants :variants="productSelected.variedades" />
+          <ProductVariants
+            :variants="selectedProduct.variedades"
+            @select-variant="setSelectedVariant"
+          />
         </div>
         <div
           v-if="
-            productSelected.variedades2 &&
-            productSelected.variedades2?.length > 0
+            selectedProduct.variedades2 &&
+            selectedProduct.variedades2?.length > 0
           "
           class="grid gap-4"
         >
-          <ProductVariants :variants="productSelected.variedades2" />
+          <ProductVariants
+            :variants="selectedProduct.variedades2"
+            @select-variant="setSelectedVariant2"
+          />
         </div>
       </div>
     </template>
 
     <template #footer>
-      <!-- <div class="flex justify-end">
-        <button class="py-1 px-4 rounded-md bg-green-200">aceptar</button>
-      </div> -->
+      <div class="flex justify-end">
+        <button
+          class="py-1 px-4 rounded-md bg-green-300"
+          @click="handleAddToCart"
+        >
+          agregar
+        </button>
+      </div>
     </template>
   </Modal>
 
@@ -64,7 +101,7 @@ const handleAddToCart = (product: Product) => {
       v-for="product in productList"
       :key="product.id"
       :product="product"
-      :handle-add-to-cart="() => handleAddToCart(product)"
+      @add-click="handleAddClick"
     />
   </section>
 </template>
