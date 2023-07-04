@@ -23,8 +23,8 @@ export const useUtils = () => {
 
     const productList = parsed.map((product) => ({
       ...product,
-      variedades: product.variedades?.split(","),
-      variedades2: product.variedades2?.split(","),
+      variedades: product.variedades ? product.variedades.split(",") : [],
+      variedades2: product.variedades2 ? product.variedades2.split(",") : [],
     }));
 
     return productList;

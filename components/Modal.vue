@@ -24,7 +24,7 @@ defineProps<{
     </div>
   </dialog>
   <div
-    class="block absolute z-0 top-0 left-0 w-full h-screen backdrop-blur-sm isOpen ? 'bg-red/10':'bg-red/10'"
+    class="block fixed z-0 top-0 left-0 w-full h-screen backdrop-blur-sm isOpen ? 'bg-red/10':'bg-red/10'"
     :class="{ hidden: !isOpen }"
   />
 </template>

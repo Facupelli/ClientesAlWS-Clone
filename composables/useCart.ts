@@ -4,7 +4,7 @@ const useCart = () => {
   const cart = useState<Product[]>("cart", () => []);
 
   const addToCart = (product: Product) => {
-    if (cart.value.find((item) => product.id === item.id)) {
+    if (cart.value && cart.value.find((item) => product.id === item.id)) {
       return;
     }
 
