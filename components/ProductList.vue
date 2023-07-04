@@ -10,21 +10,17 @@ const child = ref(null);
 const productSelected = ref<Product | null>(null);
 
 const setSelectedProduct = (product: Product) => {
-  if (productSelected.value) {
-    productSelected.value = product;
-  }
+  productSelected.value = product;
 };
 
 const handleAddToCart = (product: Product) => {
-  // if (product.variedades && product.variedades?.length > 0) {
-  //   setSelectedProduct(product);
-  //   return (showModal.value = true);
-  // }
-  // addToCart(product);
-  console.log("si");
-  if (child.value) {
-    child.value.openModal();
+  if (product.variedades && product.variedades?.length > 0) {
+    if (child.value) {
+      setSelectedProduct(product);
+      return child.value.openModal();
+    }
   }
+  addToCart(product);
 };
 </script>
 
