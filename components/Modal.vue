@@ -7,7 +7,7 @@ defineProps<{
 <template>
   <dialog
     :open="isOpen"
-    class="absolute w-[90%] shadow-md rounded-md z-10 p-0 top-5"
+    class="absolute w-[80%] shadow-md rounded-md z-10 p-0 top-5"
   >
     <div class="">
       <div class="bg-gray-100 p-4 font-bold">

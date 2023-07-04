@@ -1,7 +1,7 @@
 <template>
   <div>
     <Nav />
-    <div class="px-6 py-4">
+    <div class="py-4">
       <slot />
     </div>
   </div>

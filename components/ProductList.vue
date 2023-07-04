@@ -35,17 +35,35 @@ const handleAddToCart = (product) => {
     </template>
 
     <template #body>
-      <ul v-if="productSelected">
-        <li v-for="variant in productSelected.variedades">{{ variant }}</li>
-      </ul>
+      <div v-if="productSelected" class="grid gap-4">
+        <ul class="flex flex-wrap gap-2">
+          <li
+            v-for="variant in productSelected.variedades"
+            class="font-semibold flex justify-center items-center border-b-2 px-3 py-1 border-gray-200"
+          >
+            {{ variant }}
+          </li>
+        </ul>
+        <ul
+          v-if="productSelected.variedades2.length > 0"
+          class="flex flex-wrap gap-2"
+        >
+          <li
+            v-for="variant in productSelected.variedades2"
+            class="font-semibold flex justify-center items-center border-b-2 px-3 py-1 border-gray-200"
+          >
+            {{ variant }}
+          </li>
+        </ul>
+      </div>
     </template>
 
-    <template #footer>
+    <!-- <template #footer>
       <h1>FOOTER</h1>
-    </template>
+    </template> -->
   </Modal>
 
-  <section class="grid grid-cols-2 gap-4">
+  <section class="grid grid-cols-2 gap-1">
     <ProductCard
       v-for="product in productList"
       :product="product"

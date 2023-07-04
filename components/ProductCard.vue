@@ -19,16 +19,18 @@ defineProps<{
         height="169"
       />
     </div>
-    <h1 class="font-semibold">{{ product.nombre }}</h1>
-    <p class="text-xs line-clamp-3">
-      {{ product.descripcion }}
-    </p>
-    <p class="font-bold">{{ formatPrice(product.precio) }}</p>
-    <button
-      @click="handleAddToCart(product)"
-      class="p-1 bg-green-300 rounded-md"
-    >
-      agregar
-    </button>
+    <div class="grid gap-2 px-4 pb-6">
+      <h1 class="font-semibold">{{ product.nombre }}</h1>
+      <p class="text-xs line-clamp-3">
+        {{ product.descripcion }}
+      </p>
+      <p class="font-bold">{{ formatPrice(product.precio) }}</p>
+      <button
+        @click="handleAddToCart(product)"
+        class="p-1 bg-green-300 rounded-md"
+      >
+        agregar
+      </button>
+    </div>
   </article>
 </template>
