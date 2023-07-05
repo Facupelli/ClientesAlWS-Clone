@@ -11,7 +11,13 @@ const { cart } = useCart();
           >Agrega productos!</NuxtLink
         >
       </p>
-      <CartItem v-for="item in cart" :item="item" />
+      <transition-group
+        leave-active-class="ease-in duration-200"
+        leave-from-class="opacity-100 scale-100"
+        leave-to-class="opacity-0 scale-95"
+      >
+        <CartItem v-for="item in cart" :item="item" />
+      </transition-group>
     </section>
     <CartForm />
   </div>
