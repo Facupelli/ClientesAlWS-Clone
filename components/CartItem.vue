@@ -22,8 +22,12 @@ defineProps<{
     <div>
       <p class="font-semibold">{{ item.nombre }}</p>
       <div class="flex gap-4">
-        <p class="text-black/60">{{ item.variedades[0] }}</p>
-        <p class="text-black/60">{{ item.variedades2[0] }}</p>
+        <p class="text-black/60" v-if="typeof item.variedades === 'string'">
+          {{ item.variedades }}
+        </p>
+        <p class="text-black/60" v-if="typeof item.variedades2 === 'string'">
+          {{ item.variedades2 }}
+        </p>
       </div>
     </div>
     <p class="font-bold ml-auto">{{ formatPrice(item.precio) }}</p>

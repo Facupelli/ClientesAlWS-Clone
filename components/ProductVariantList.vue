@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { emit } from "process";
-
 defineProps<{
   variants: string[];
   selectedVariant: string | null;

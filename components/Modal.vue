@@ -32,7 +32,7 @@ defineExpose({
     >
       <div
         class="block fixed z-10 inset-0 overflow-y-auto bg-black/30 backdrop-blur-sm"
-        v-show="showModal"
+        v-if="showModal"
       >
         <transition
           enter-active-class="transition ease-out duration-300 transform "
@@ -62,7 +62,7 @@ defineExpose({
                 <slot name="body"> </slot>
               </div>
 
-              <div class="p-4">
+              <div>
                 <slot name="footer"> </slot>
               </div>
             </div>
