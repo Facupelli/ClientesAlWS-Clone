@@ -17,7 +17,9 @@ onClickOutside(el, close);
 </script>
 
 <template>
-  <nav class="flex px-6 relative bg-green-400 h-[60px] items-center">
+  <nav
+    class="flex px-6 relative bg-slate-500 text-white/90 h-[60px] items-center"
+  >
     <NuxtLink to="/">
       <h1>Clientes al WS</h1>
     </NuxtLink>
@@ -25,7 +27,7 @@ onClickOutside(el, close);
     <input v-model="nav" id="nav-toggle" type="checkbox" class="peer hidden" />
     <div
       ref="el"
-      class="absolute top-0 left-[-80%] z-10 w-[70vw] h-screen peer-checked:left-0 bg-green-400 transition-all duration-300 ease-in-out"
+      class="absolute top-0 left-[-80%] z-10 w-[70vw] h-screen peer-checked:left-0 bg-slate-800 transition-all duration-300 ease-in-out"
     >
       <ul class="grid gap-4 p-4 text-white font-bold">
         <li>

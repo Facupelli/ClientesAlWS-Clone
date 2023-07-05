@@ -98,7 +98,7 @@ const handleAddToCart = () => {
     </template>
   </Modal>
 
-  <section class="grid grid-cols-2 gap-1">
+  <section class="grid grid-cols-2 gap-2 px-2">
     <ProductCard
       v-for="product in productList"
       :key="product.id"
