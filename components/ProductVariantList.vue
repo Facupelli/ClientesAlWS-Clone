@@ -10,7 +10,7 @@ defineProps<{
     <li
       v-for="variant in variants"
       class="font-semibold flex justify-center items-center border-b-2 px-3 py-1 border-gray-200"
-      :class="{ 'border-green-400': selectedVariant === variant }"
+      :class="{ 'border-slate-600': selectedVariant === variant }"
     >
       <input
         type="radio"

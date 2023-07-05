@@ -55,7 +55,10 @@ const hasVariants2 = computed(() => getHasVariants(props.product.variedades2));
   </div>
 
   <div class="flex justify-end py-2">
-    <button class="py-1 px-4 rounded-md bg-green-300" @click="addToCart">
+    <button
+      class="py-1 px-4 rounded-md bg-slate-400 text-white/90"
+      @click="addToCart"
+    >
       agregar
     </button>
   </div>

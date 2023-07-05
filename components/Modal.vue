@@ -54,7 +54,7 @@ defineExpose({
               >
                 <slot name="header"> </slot>
                 <div>
-                  <button @click="closeModal">X</button>
+                  <button @click="closeModal" class="text-slate-600">X</button>
                 </div>
               </div>
 

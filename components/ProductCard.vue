@@ -65,7 +65,7 @@ defineProps<{
         <p class="font-bold">{{ formatPrice(product.precio) }}</p>
         <button
           @click="() => handleAddClick(product)"
-          class="py-1 px-5 bg-slate-700 text-white/90 text-sm rounded-md"
+          class="py-1 px-5 bg-slate-400 text-white/90 text-sm rounded-md"
         >
           agregar
         </button>
