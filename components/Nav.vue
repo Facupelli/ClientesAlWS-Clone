@@ -17,7 +17,7 @@ onClickOutside(el, close);
 </script>
 
 <template>
-  <nav class="flex py-4 px-6 relative bg-green-400">
+  <nav class="flex px-6 relative bg-green-400 h-[60px] items-center">
     <NuxtLink to="/">
       <h1>Clientes al WS</h1>
     </NuxtLink>
