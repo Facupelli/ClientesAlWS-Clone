@@ -4,11 +4,7 @@ import { ExcelProduct } from "types";
 
 export const useUtils = () => {
   const fetchProducts = async () => {
-    const {
-      data: res,
-      error,
-      refresh,
-    } = await useFetch(
+    const { data: res, pending } = await useFetch(
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vR65nl0AWQR-eSgLzYv0Au5B-CwBQuimpZSrThC5CXEWLQKeEynEcFnCrPtzNtgaCjTMZmFFJvfIsO0/pub?output=csv"
     );
     const data = (await toRaw(res.value)) as string;
@@ -27,7 +23,7 @@ export const useUtils = () => {
       variedades2: product.variedades2 ? product.variedades2.split(",") : [],
     }));
 
-    return productList;
+    return { productList, pending };
   };
 
   const formatPrice = (price: number) => {
