@@ -25,9 +25,9 @@ const cartTotal = computed(() =>
       </div>
     </section>
     <div class="flex justify-center">
-      <p class="text-base">
+      <p class="text-lg">
         TOTAL:
-        <span class="font-bold text-lg">{{ formatPrice(cartTotal) }}</span>
+        <span class="font-bold text-xl">{{ formatPrice(cartTotal) }}</span>
       </p>
     </div>
     <CartForm />

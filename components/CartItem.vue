@@ -32,7 +32,7 @@ defineProps<{
     </div>
     <p class="font-bold ml-auto">{{ formatPrice(item.precio) }}</p>
     <div>
-      <button @click="() => removeFromCart(item.id)">x</button>
+      <button @click="() => removeFromCart(item.id)">X</button>
     </div>
   </div>
 </template>
