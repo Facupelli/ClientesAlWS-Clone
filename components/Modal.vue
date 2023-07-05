@@ -43,7 +43,7 @@ defineExpose({
           leave-to-class="opacity-0 translate-y-[-100px] translate-y-0 scale-95"
         >
           <dialog
-            class="absolute w-[90%] shadow-md rounded-md z-10 p-0 top-5"
+            class="absolute w-[90%] sm:w-[50%] shadow-md rounded-md z-10 p-0 top-5"
             v-show="showModal"
             open
             ref="modalRef"

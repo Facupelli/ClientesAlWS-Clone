@@ -27,7 +27,7 @@ onClickOutside(el, close);
     <input v-model="nav" id="nav-toggle" type="checkbox" class="peer hidden" />
     <div
       ref="el"
-      class="absolute top-0 left-[-80%] z-10 w-[70vw] h-screen peer-checked:left-0 bg-slate-800 transition-all duration-300 ease-in-out"
+      class="absolute top-0 left-[-80%] z-10 w-[70vw] max-w-[400px] h-screen peer-checked:left-0 bg-slate-800 transition-all duration-300 ease-in-out"
     >
       <ul class="grid gap-4 p-8 text-white font-bold">
         <li>
