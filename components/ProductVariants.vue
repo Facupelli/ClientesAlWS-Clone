@@ -3,9 +3,8 @@ import { emit } from "process";
 
 defineProps<{
   variants: string[];
+  selectedVariant: string | null;
 }>();
-
-const variantSelected = ref<string | null>(null);
 </script>
 
 <template>
@@ -13,10 +12,9 @@ const variantSelected = ref<string | null>(null);
     <li
       v-for="variant in variants"
       class="font-semibold flex justify-center items-center border-b-2 px-3 py-1 border-gray-200"
-      :class="{ 'border-green-400': variantSelected === variant }"
+      :class="{ 'border-green-400': selectedVariant === variant }"
     >
       <input
-        v-model="variantSelected"
         type="radio"
         :id="variant"
         :value="variant"

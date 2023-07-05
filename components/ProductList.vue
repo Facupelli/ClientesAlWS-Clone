@@ -25,6 +25,8 @@ const setSelectedVariant2 = (variant: string) => {
 
 const handleAddClick = (product: Product) => {
   if (product.variedades && product.variedades?.length > 0) {
+    selectedVariant.value = null;
+    selectedVariant2.value = null;
     if (child.value) {
       setSelectedProduct(product);
       return child.value.openModal();
@@ -67,6 +69,7 @@ const handleAddToCart = () => {
         >
           <ProductVariants
             :variants="selectedProduct.variedades"
+            :selected-variant="selectedVariant"
             @select-variant="setSelectedVariant"
           />
         </div>
@@ -79,6 +82,7 @@ const handleAddToCart = () => {
         >
           <ProductVariants
             :variants="selectedProduct.variedades2"
+            :selected-variant="selectedVariant2"
             @select-variant="setSelectedVariant2"
           />
         </div>
