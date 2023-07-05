@@ -38,8 +38,13 @@ export const useUtils = () => {
     }).format(price);
   };
 
+  const getHasVariants = (variants: string[]) => {
+    return variants.length > 0;
+  };
+
   return {
     formatPrice,
     fetchProducts,
+    getHasVariants,
   };
 };

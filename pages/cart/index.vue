@@ -1,5 +1,12 @@
 <script setup>
+const { formatPrice } = useUtils();
 const { cart } = useCart();
+
+const cartTotal = computed(() =>
+  cart.value.reduce((acc, curr) => {
+    return acc + Number(curr.precio);
+  }, 0)
+);
 </script>
 
 <template>
@@ -17,6 +24,12 @@ const { cart } = useCart();
         </TransitionGroup>
       </div>
     </section>
+    <div class="flex justify-center">
+      <p class="text-base">
+        TOTAL:
+        <span class="font-bold text-lg">{{ formatPrice(cartTotal) }}</span>
+      </p>
+    </div>
     <CartForm />
   </div>
 </template>

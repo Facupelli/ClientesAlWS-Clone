@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Product } from "types";
 
+const { getHasVariants } = useUtils();
+
 const props = defineProps<{
   product: Product;
 }>();
@@ -31,23 +33,20 @@ const addToCart = async () => {
   selectedVariant.value = null;
   selectedVariant2.value = null;
 };
+
+const hasVariants = computed(() => getHasVariants(props.product.variedades));
+const hasVariants2 = computed(() => getHasVariants(props.product.variedades2));
 </script>
 
 <template>
-  <div
-    v-if="product.variedades && product.variedades?.length > 0"
-    class="grid gap-4"
-  >
+  <div v-if="hasVariants" class="grid gap-4">
     <ProductVariantList
       :variants="product.variedades"
       :selected-variant="selectedVariant"
       @select-variant="handleSelectVariant"
     />
   </div>
-  <div
-    v-if="product.variedades2 && product.variedades2?.length > 0"
-    class="grid gap-4"
-  >
+  <div v-if="hasVariants2" class="grid gap-4">
     <ProductVariantList
       :variants="product.variedades2"
       :selected-variant="selectedVariant2"
