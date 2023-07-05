@@ -1,3 +1,14 @@
+<script setup lang="ts">
+const { fetchProducts } = useUtils();
+const nuxtApp = useNuxtApp();
+
+nuxtApp.hook("app:mounted", async () => {
+  const products = await fetchProducts();
+
+  useState("productList", () => products);
+});
+</script>
+
 <template>
   <div>
     <NuxtLayout>

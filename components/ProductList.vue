@@ -3,9 +3,8 @@ import ProductVariants from "./ProductVariants.vue";
 import Modal from "./Modal.vue";
 import { Product } from "types";
 
-const { fetchProducts } = useUtils();
+const productList = useState("productList");
 const { cart, addToCart } = useCart();
-const productList = await fetchProducts();
 
 const child = ref<InstanceType<typeof Modal> | null>(null);
 const selectedProduct = ref<Product | null>(null);
@@ -101,7 +100,6 @@ const handleAddToCart = () => {
   <section class="grid grid-cols-2 gap-2 px-2">
     <ProductCard
       v-for="product in productList"
-      :key="product.id"
       :product="product"
       @add-click="handleAddClick"
     />

@@ -29,7 +29,7 @@ onClickOutside(el, close);
       ref="el"
       class="absolute top-0 left-[-80%] z-10 w-[70vw] h-screen peer-checked:left-0 bg-slate-800 transition-all duration-300 ease-in-out"
     >
-      <ul class="grid gap-4 p-4 text-white font-bold">
+      <ul class="grid gap-4 p-8 text-white font-bold">
         <li>
           <NuxtLink to="/">INICIO</NuxtLink>
         </li>
