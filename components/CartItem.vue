@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex gap-4">
+  <div class="flex gap-4 h-20 w-full">
     <div>
       <nuxt-img
         :src="item.imagen"

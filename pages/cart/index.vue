@@ -11,14 +11,28 @@ const { cart } = useCart();
           >Agrega productos!</NuxtLink
         >
       </p>
-      <transition-group
-        leave-active-class="ease-in duration-200"
-        leave-from-class="opacity-100 scale-100"
-        leave-to-class="opacity-0 scale-95"
-      >
-        <CartItem v-for="item in cart" :item="item" />
-      </transition-group>
+      <TransitionGroup tag="ul" name="fade" class="relative">
+        <CartItem v-for="item in cart" :item="item" :key="item.id" />
+      </TransitionGroup>
     </section>
     <CartForm />
   </div>
 </template>
+
+<style>
+.fade-move,
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translate(50px, 0);
+}
+
+.fade-leave-active {
+  position: absolute;
+}
+</style>
